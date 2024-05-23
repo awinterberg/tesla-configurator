@@ -1,15 +1,25 @@
 import {Component} from '@angular/core';
-import {AsyncPipe, JsonPipe} from '@angular/common';
+import {Step} from "./models/step";
+import {AppModule} from "./modules/app/app.module";
+import {CarService} from "./services/car.service";
+import {AsyncPipe} from "@angular/common";
 
 @Component({
-  selector: 'app-root',
+  selector: 'tesla-root',
   standalone: true,
-  imports: [AsyncPipe, JsonPipe],
-  template: `
-    <h1>Hello from {{ name }}!</h1>
-  `,
+  imports: [AppModule, AsyncPipe],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  name = 'Angular';
+  name: string = 'Angular';
+  steps: Step[] = [
+    new Step('Step 1', '/step1'),
+    new Step('Step 2', '/step2'),
+    new Step('Step 3', '/step3')
+  ];
 
+
+  constructor(public carService: CarService) {
+  }
 }

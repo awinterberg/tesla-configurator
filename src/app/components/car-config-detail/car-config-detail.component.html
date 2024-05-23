@@ -1,0 +1,34 @@
+<h1>Step 2: Select your config and options</h1>
+@if (config && configOptions) {
+  Config:
+  <select id="configSelect" (change)="onConfigOptionSelected($event)">
+    <option value="">Select config...</option>
+    @for (configOption of configOptions; track configOption.id) {
+      <option [selected]="selectedConfigOption?.id === configOption.id">{{ configOption.description }}</option>
+    }
+  </select>
+  @if (selectedConfigOption) {
+    <div>Range: {{ selectedConfigOption.range | miles }} -
+      Max Speed: {{ selectedConfigOption.speed }} -
+      Cost: {{ selectedConfigOption.price | currency : '$' }}
+    </div>
+  }
+  @if (config.towHitch) {
+    <tesla-checkbox
+      id="includeTow"
+      label="Tow hitch?"
+      [(checked)]="isTowHitchChecked"
+      (checkedChange)="onTowHitchChange($event)">
+    </tesla-checkbox>
+  }
+  @if (config.yoke) {
+    <tesla-checkbox
+      id="includeYoke"
+      label="Yoke steering wheel?"
+      [(checked)]="isYokeChecked"
+      (checkedChange)="onYokeChange($event)">
+    </tesla-checkbox>
+  }
+} @else {
+  <span>Error on Step 1 or while retrieving data!</span>
+}

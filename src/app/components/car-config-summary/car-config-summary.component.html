@@ -1,0 +1,32 @@
+<h1>Step 3: Summary</h1>
+<div id="summary-container">
+  <h2>Your Tesla {{ (carService.getModel$() | async)?.description }}</h2>
+  <div class="summary-item">
+    <span class="item-title">{{ configOption?.description }}</span>
+    <span class="item-price">{{ configOption?.price | currency : '$' }}</span>
+  </div>
+  <div>
+    <span class="item-title">Range: {{ configOption?.range | miles }} -
+      Max speed: {{ configOption?.speed }}</span>
+  </div>
+  <div class="summary-item">
+    <span class="item-title">{{ color?.description }}</span>
+    <span class="item-price">{{ color?.price | currency : '$' }}</span>
+  </div>
+  @if (towHitchChecked) {
+    <div class="summary-item">
+      <span class="item-title">Tow Hitch Package</span>
+      <span class="item-price">{{ CHECKBOX_PRICES | currency : '$' }}</span>
+    </div>
+  }
+  @if (yokeChecked) {
+    <div class="summary-item">
+      <span class="item-title">Yoke Package</span>
+      <span class="item-price">{{ CHECKBOX_PRICES | currency : '$' }}</span>
+    </div>
+  }
+  <div class="total-cost">
+    <span class="total-lable">TOTAL COST</span>
+    <span class="total-price">{{ totalCost | currency : '$' }}</span>
+  </div>
+</div>

@@ -6,5 +6,6 @@ import {CarConfigSummaryComponent} from "./components/car-config-summary/car-con
 export const routes: Routes = [
   { path: 'step1', component: CarConfigComponent },
   { path: 'step2', component: CarConfigDetailComponent },
-  { path: 'step3', component: CarConfigSummaryComponent }
+  { path: 'step3', component: CarConfigSummaryComponent },
+  { path: '**', redirectTo: 'step1'}
 ];

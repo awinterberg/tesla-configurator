@@ -12,6 +12,7 @@ import {AsyncPipe} from "@angular/common";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  title: string = 'tesla-configurator'
   name: string = 'Angular';
   steps: Step[] = [
     new Step('Step 1', '/step1'),
